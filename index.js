@@ -13,19 +13,27 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
+restService.post("/webhook", function(req, res) {
   var speech =
     req.body.result &&
     req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
-      : "Seems like some problem. Speak again.";
+    req.body.result.parameters.tipo
+      ? response(req.body.result.parameters.tipo.toLowerCase)
+      : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   return res.json({
     speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
 });
+
+let response = function(tipo){
+  switch(tipo){
+    case 'daw': 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=7'; break;
+    case 'asir': 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
+    default: 'bollos y magdalenas'; break;
+  }
+}
 
 restService.post("/audio", function(req, res) {
   var speech = "";
