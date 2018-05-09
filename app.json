@@ -9,14 +9,6 @@
       "description": "Copy App Name here",
       "value": "grancapibot"
     },
-    "TELEGRAM_TOKEN": {
-      "description": "",
-      "value": "594433471:AAEa2tidUbvEAau5vUKMjGTIcnUQ_dkqfQs"
-    },
-    "APIAI_ACCESS_TOKEN": {
-      "description": "",
-      "value": "49d25ee944bf42a4a1ffca1d285c514a"
-    },
     "APIAI_LANG": {
       "description": "Agent language",
       "value": "es",
