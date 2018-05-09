@@ -18,7 +18,7 @@ restService.post("/webhook", function(req, res) {
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.tipo
-      ? response(req.body.result.parameters.tipo.toLowerCase)
+      ? response('respuesta: '+req.body.result.parameters.tipo.toLowerCase)
       : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   return res.json({
     speech: speech,
@@ -28,11 +28,13 @@ restService.post("/webhook", function(req, res) {
 });
 
 let response = function(tipo){
+  let response;
   switch(tipo){
-    case 'daw': 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=7'; break;
-    case 'asir': 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
-    default: 'bollos y magdalenas'; break;
+    case 'daw':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=7'; break;
+    case 'asir':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
+    default: response = 'bollos y magdalenas'; break;
   }
+  return response;
 }
 
 restService.post("/audio", function(req, res) {
