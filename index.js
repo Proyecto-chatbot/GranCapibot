@@ -18,7 +18,7 @@ restService.post("/webhook", function(req, res) {
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.tipo
-      ? "Catapum"//response(req.body.result.parameters.tipo.toLowerCase())
+      ? response(req.body.result.parameters.tipo.toLowerCase())
       : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   return res.json({
     speech: speech,
