@@ -10,7 +10,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = '594433471:AAEa2tidUbvEAau5vUKMjGTIcnUQ_dkqfQs';
 
 // Create a bot that uses 'polling' to fetch new updates
-const URL = 'https://grancapibot.herokuapp.com/';
+const URL = 'https://grancapibot.herokuapp.com/webhook';
 
 const bot = new TelegramBot(token);
 
