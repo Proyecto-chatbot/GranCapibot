@@ -10,9 +10,17 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = '594433471:AAEa2tidUbvEAau5vUKMjGTIcnUQ_dkqfQs';
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
-bot.setWebHook(`https://grancapibot.herokuapp.com//bot`+token);
-app.use(bot.webhookCallback((`/bot`+token));
+const URL = 'https://grancapibot.herokuapp.com/';
+
+const bot = new TelegramBot(token);
+
+bot.setWebHook(`${URL}/bot${token}`);
+
+// Express
+const app = express();
+
+// Use Node-Telegram-Bot-API As An Express Middleware
+app.use(bot.webhookCallback((`/bot${token}`))
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
