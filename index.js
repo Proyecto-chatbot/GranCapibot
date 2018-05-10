@@ -2,7 +2,8 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const showdown = require("showdown");
+var converter = new showdown.Converter();
 const restService = express();
 
 restService.use(
@@ -30,8 +31,8 @@ restService.post("/webhook", function(req, res) {
 let response = function(tipo){
   let response;
   switch(tipo){
-    case 'daw':  response = 'Hecho, entra [aquí](http://moodle.iesgrancapitan.org/course/index.php?categoryid=7)'; break;
-    case 'asir':  response = 'Hecho, entra [aquí](http://moodle.iesgrancapitan.org/course/index.php?categoryid=4)'; break;
+    case 'daw':  response = converter.makeHtml('[Enlace](http://moodle.iesgrancapitan.org/course/index.php?categoryid=7)'); break;
+    case 'asir':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
     default: response = 'Vaya... Creo que algo fue mal'; break;
   }
   return response;
