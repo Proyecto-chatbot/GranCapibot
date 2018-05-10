@@ -2,8 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const showdown = require("showdown");
-var converter = new showdown.Converter();
+
 const restService = express();
 
 restService.use(
@@ -19,7 +18,7 @@ restService.post("/webhook", function(req, res) {
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.tipo
-      ? response(req.body.result.parameters.tipo.toLowerCase())
+      ? "Catapum"//response(req.body.result.parameters.tipo.toLowerCase())
       : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   return res.json({
     speech: speech,
@@ -33,7 +32,7 @@ let response = function(tipo){
   switch(tipo){
     case 'daw':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=7'; break;
     case 'asir':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
-    default: response = 'Vaya... Creo que algo fue mal'; break;
+    default: response = 'bollos y magdalenas'; break;
   }
   return response;
 }
