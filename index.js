@@ -15,11 +15,11 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/webhook", function(req, res) {
+  let tipo = req.body.result.parameters.tipo;
   var speech =
     req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.tipo
-      ? response(req.body.result.parameters.tipo.toLowerCase())
+    req.body.result.parameters && tipo
+      ? 'Aquí tienes un montón de información de '+ tipo + ': ' + response(tipo.toLowerCase())
       : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   return res.json({
     speech: speech,
