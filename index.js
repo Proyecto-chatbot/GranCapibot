@@ -26,7 +26,7 @@ restService.post("/webhook", function(req, res) {
     if(req.body.result.parameters.tipo)
       speech = response(req.body.result.parameters.tipo.toLowerCase());
     else if(req.body.result.parameters.nombre_ciclo)
-      speech = 'oki';
+      speech = req.body.result.parameters;
   }else{
       speech = "Ups... ha habido algún problema con nuestra comunicación, sorry!";
   }
