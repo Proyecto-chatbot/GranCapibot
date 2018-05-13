@@ -15,6 +15,12 @@ restService.use(bodyParser.json());
 
 restService.post("/webhook", function(req, res) {
   var speech;
+  // PRUEBA
+  if(req.body.result && req.body.result.event)
+    if(req.body.result.event.evento){
+      speech = "funciona";
+    }
+  ///////////
   if(req.body.result && req.body.result.parameters){
     if(req.body.result.parameters.tipo)
       speech = response_fp(req.body.result.parameters.tipo.toLowerCase());
@@ -54,7 +60,7 @@ let response_fp = function(tipo){
       break;
     case 'direccion restauracion':
       response_fp = 'Aquí está la información que buscas --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-superior/detalle-titulo?idTitulo=58';
-        break;
+      break;
     default: response_fp = 'Ese ciclo yo no lo conozco, tendré que ponerme al día!'; break;
   }
   return response_fp;
