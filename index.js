@@ -16,7 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/webhook", function(req, res) {
   var speech;
   // PRUEBA
-  if(req.body.result && req.body.result.event)
+  if(req.body.result && req.body.result.events)
     if(req.body.result.events.evento){
       speech = "funciona";
     }
