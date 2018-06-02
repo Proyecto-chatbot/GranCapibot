@@ -26,29 +26,52 @@ restService.get("/prueba",function(req,res){
 });
 /*
 restService.post("/webhook", function(req, res) {
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.tipo
-      ? response(req.body.result.parameters.tipo.toLowerCase())
-      : "Ups... ha habido algún problema con nuestra comunicación, sorry!";
+  var speech;
+  if(req.body.result && req.body.result.parameters){
+    if(req.body.result.parameters.tipo)
+      speech = response_fp(req.body.result.parameters.tipo.toLowerCase());
+    else if(req.body.result.parameters.nombre_ciclo)
+      speech = response_fp(req.body.result.parameters.nombre_ciclo.toLowerCase());
+  }else{
+      speech = "Ups... ha habido algún problema con nuestra comunicación, sorry!";
+  }
+
   return res.json({
     speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
 });
-*/
-let response = function(tipo){
-  let response;
-  switch(tipo){
-    case 'daw':  response = 'Aquí hay un montón de información --> http://moodle.iesgrancapitan.org/course/index.php?categoryid=7'; break;
-    case 'asir':  response = 'http://moodle.iesgrancapitan.org/course/index.php?categoryid=4'; break;
-    default: response = 'bollos y magdalenas'; break;
-  }
-  return response;
-}
 
+let response_fp = function(tipo){
+  let response_fp;
+  switch(tipo){
+    case 'daw':
+      response_fp = 'Aquí hay un montón de información --> http://moodle.iesgrancapitan.org/course/index.php?categoryid=7';
+      break;
+    case 'asir':
+      response_fp = 'Mira aquí --> http://moodle.iesgrancapitan.org/course/index.php?categoryid=4';
+      break;
+    case 'cocina y gastronomia':
+      response_fp = 'Quizás aquí obtengas la información que buscas --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-medio/detalle-titulo?idTitulo=1';
+      break;
+    case 'servicios restauracion':
+      response_fp = 'Mira aquí --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-medio/detalle-titulo?idTitulo=2';
+      break;
+    case 'cocina y restauracion':
+      response_fp = 'Aquí hay un montón de información --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-basica/detalle-titulo?idTitulo=148';
+      break;
+    case 'direccion cocina':
+      response_fp = 'He encontrado esto al respecto --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-superior/detalle-titulo?idTitulo=57';
+      break;
+    case 'direccion restauracion':
+      response_fp = 'Aquí está la información que buscas --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-superior/detalle-titulo?idTitulo=58';
+      break;
+    default: response_fp = 'Ese ciclo yo no lo conozco, tendré que ponerme al día!'; break;
+  }
+  return response_fp;
+}
+*/
 
 
 restService.listen(process.env.PORT || 8000, function() {
