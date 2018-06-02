@@ -24,9 +24,13 @@ restService.post("/prueba",function(req,res){
   promise.then(function(response){
     console.log(response);
     return res.json({
-      speech: "yo también!",
-      displayText : "yo también!",
+      speech: "yo también! me rugen los circuitos!",
+      displayText : "yo también! me rugen los circuitos!",
       messages:[
+        {
+          type : 0,
+          speech : "yo también! me rugen los circuitos!"
+        },
         {
           type : 3,
           imageUrl : response
