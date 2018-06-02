@@ -14,15 +14,19 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.get("/prueba",function(req,res){
-  request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
-  console.log(JSON.parse(body).data.images.original.url);
-
-  return res.json({
-    speech: JSON.parse(body).data.images.original.url,
-    displayText : JSON.parse(body).data.images.original.url,
-    source : "webhook-echo-sample"
+  promise = new Promise(function(resolve){
+    request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
+      resolve(res.json({
+        speech: JSON.parse(body).data.images.original.url,
+        displayText : JSON.parse(body).data.images.original.url,
+        source : "webhook-echo-sample"
+      }));
+    });
   });
-  })
+  promise.then(function(res){
+    console.log(res);
+    return res;
+  });
 });
 /*
 restService.post("/webhook", function(req, res) {
