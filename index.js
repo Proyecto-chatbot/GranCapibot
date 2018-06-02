@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const request = require("request");
 const restService = express();
 
 restService.use(
@@ -13,6 +13,18 @@ restService.use(
 
 restService.use(bodyParser.json());
 
+restService.get("/prueba",function(req,res){
+  request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
+  console.log(JSON.parse(body).data.images.original.url);
+
+  return res.json({
+    speech: JSON.parse(body).data.images.original.url,
+    displayText : JSON.parse(body).data.images.original.url,
+    source : "webhook-echo-sample"
+  });
+  })
+});
+/*
 restService.post("/webhook", function(req, res) {
   var speech =
     req.body.result &&
@@ -26,7 +38,7 @@ restService.post("/webhook", function(req, res) {
     source: "webhook-echo-sample"
   });
 });
-
+*/
 let response = function(tipo){
   let response;
   switch(tipo){
