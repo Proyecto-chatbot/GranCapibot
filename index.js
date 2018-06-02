@@ -26,10 +26,25 @@ restService.post("/prueba",function(req,res){
     return res.json({
       speech: response,
       displayText : response,
-      source : "webhook-echo-sample"
-    });
+      source : "webhook-echo-sample", 
+      "messages": {
+        "type": 1,
+        "title": "card title",
+        "subtitle": "card text",
+        "imageUrl": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
+        },
+    
+    },
+    
+  );
   });
 });
+
+/**
+ * { "type": "basic_card", "platform": "google", "image": { "url": response },"lang": "es"},
+	 { "type": 3, "platform": "telegram", "imageUrl": response, "lang": "es"},
+   { "type": 0,"speech": response}
+ */
 /*
 restService.post("/webhook", function(req, res) {
   var speech;
