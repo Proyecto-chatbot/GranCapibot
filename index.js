@@ -27,11 +27,11 @@ restService.post("/prueba",function(req,res){
       speech: response,
       displayText : response,
       source : "webhook-echo-sample", 
-      "messages": {
-        "type": 1,
-        "title": "card title",
-        "subtitle": "card text",
-        "imageUrl": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
+      messages: {
+        type: 1,
+        title: "card title",
+        subtitle: "card text",
+        imageUrl: "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png"
         },
     
     },
