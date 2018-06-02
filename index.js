@@ -21,6 +21,7 @@ restService.get("/prueba",function(req,res){
   });
   
   promise.then(function(response){
+    console.log(response);
     return res.json({
       speech: response,
       displayText : response,
