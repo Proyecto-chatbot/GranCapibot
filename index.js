@@ -13,7 +13,7 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.get("/prueba",function(req,res){
+restService.post("/prueba",function(req,res){
   let response;
   let promise;
   /*promise = new Promise(function(resolve){
