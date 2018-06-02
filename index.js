@@ -16,16 +16,16 @@ restService.use(bodyParser.json());
 restService.get("/prueba",function(req,res){
   promise = new Promise(function(resolve){
     request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
-      resolve(res.json({
-        speech: JSON.parse(body).data.images.original.url,
-        displayText : JSON.parse(body).data.images.original.url,
-        source : "webhook-echo-sample"
-      }));
+      resolve(response = JSON.parse(body).data.images.original.url)
     });
   });
-  promise.then(function(res){
-    console.log(res);
-    return res;
+  
+  promise.then(function(response){
+    return res.json({
+      speech: response,
+      displayText : JSON.parse(body).data.images.original.url,
+      source : "webhook-echo-sample"
+    });
   });
 });
 /*
