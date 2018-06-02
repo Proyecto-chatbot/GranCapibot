@@ -23,8 +23,8 @@ restService.get("/prueba",function(req,res){
   promise.then(function(response){
     console.log(response);
    */ return res.json({
-      speech: 'correctito',
-      displayText : 'correctito',
+      speech: "correctito",
+      displayText : "correctito",
       source : "webhook-echo-sample"
     });
 //  });
