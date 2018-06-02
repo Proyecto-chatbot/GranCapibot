@@ -14,7 +14,7 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.get("/prueba",function(req,res){
-  promise = new Promise(function(resolve){
+  /*promise = new Promise(function(resolve){
     request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
       resolve(response = JSON.parse(body).data.images.original.url)
     });
@@ -22,12 +22,12 @@ restService.get("/prueba",function(req,res){
   
   promise.then(function(response){
     console.log(response);
-    return res.json({
-      speech: response,
-      displayText : response,
+   */ return res.json({
+      speech: 'correctito',
+      displayText : 'correctito',
       source : "webhook-echo-sample"
     });
-  });
+//  });
 });
 /*
 restService.post("/webhook", function(req, res) {
