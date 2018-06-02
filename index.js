@@ -23,7 +23,7 @@ restService.get("/prueba",function(req,res){
   promise.then(function(response){
     return res.json({
       speech: response,
-      displayText : JSON.parse(body).data.images.original.url,
+      displayText : response,
       source : "webhook-echo-sample"
     });
   });
