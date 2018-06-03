@@ -1,12 +1,12 @@
 {
-  "name": "API.AI Telegram integration",
-  "description": "Api.ai Telegram integration allows you to create Telegram bots with natural language understanding based on Api.ai technology.",
-  "repository": "https://github.com/api-ai/apiai-telegram-bot",
-  "logo": "http://xvir.github.io/img/apiai.png",
-  "keywords": ["api.ai", "telegram", "natural language"],
+  "name": "GranCapibot Webhook",
+  "description": "Webhook for the chatbot -GranCapibot - DAW_2018 - Nieves Borrero  & Pablo León",
+  "repository": "https://github.com/Proyecto-chatbot/GranCapibot",
+  "logo": "./logogc.jpg",
+  "keywords": ["dialogflow", "telegram", "assistant"],
   "env": {
     "APP_NAME": {
-      "description": "Copy App Name here",
+      "description": "Project GranCapibot - DAW_2018 - Nieves Borrero  & Pablo León",
       "value": "grancapibot"
     },
     "APIAI_LANG": {

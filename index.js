@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const restService = express();
-
+const GIPHY_TOKEN =  process.env.giphy; // Defined as env var on Heroku
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -13,16 +13,16 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/prueba",function(req,res){
+restService.post("/webhook",function(req,res){
   let response;
   let promise;
   promise = new Promise(function(resolve){
-    request("https://api.giphy.com/v1/gifs/random?api_key=cpXnSvja7H6tdQ2aY54mFJrpV48e9pwY&tag=hambre&rating=PG-13",function(err,res,body){
+    let tag = "hambre"; //We can change the tag to get differents gifs 
+    request("https://api.giphy.com/v1/gifs/random?api_key="+GIPHY_TOKEN+"tag="+tag+"&rating=PG-13",function(err,res,body){
       resolve(response = JSON.parse(body).data.images.original.url)
     });
   });
   promise.then(function(response){
-    console.log(response);
     return res.json({
       speech: "yo también! me rugen los circuitos!",
       displayText : "yo también! me rugen los circuitos!",
@@ -44,14 +44,9 @@ restService.post("/prueba",function(req,res){
   });
 });
 
-/**
- * { "type": "basic_card", "platform": "google", "image": { "url": response },"lang": "es"},
-	 { "type": 3, "platform": "telegram", "imageUrl": response, "lang": "es"},
-   { "type": 0,"speech": response}
- */
 /*
 restService.post("/webhook", function(req, res) {
-  var speech;
+ var speech;
   if(req.body.result && req.body.result.parameters){
     if(req.body.result.parameters.tipo)
       speech = response_fp(req.body.result.parameters.tipo.toLowerCase());
@@ -59,10 +54,10 @@ restService.post("/webhook", function(req, res) {
       speech = response_fp(req.body.result.parameters.nombre_ciclo.toLowerCase());
   }else{
       speech = "Ups... ha habido algún problema con nuestra comunicación, sorry!";
-  }
+ }
 
   return res.json({
-    speech: speech,
+        speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
