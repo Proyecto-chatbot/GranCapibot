@@ -18,8 +18,9 @@ restService.post("/webhook",function(req,res){
   let promise;
   promise = new Promise(function(resolve){
     let tag = "hambre"; //We can change the tag to get differents gifs 
-    request("https://api.giphy.com/v1/gifs/random?api_key="+GIPHY_TOKEN+"tag="+tag+"&rating=PG-13",function(err,res,body){
+    request("https://api.giphy.com/v1/gifs/random?api_key="+GIPHY_TOKEN+"&tag="+tag+"&rating=PG-13",function(err,res,body){
       resolve(response = JSON.parse(body).data.images.original.url)
+
     });
   });
   promise.then(function(response){
