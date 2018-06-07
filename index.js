@@ -16,7 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/webhook",function(req,res){
   let response;
   let promise;
- let tag = req.body.actions //We can change the tag to get differents gifs 
+ let tag = req.body.result.action //We can change the tag to get differents gifs 
   console.log('tag ->' + tag);
   promise = new Promise(function(resolve){
    
