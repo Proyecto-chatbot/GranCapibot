@@ -13,29 +13,28 @@ restService.use(
 
 restService.use(bodyParser.json());
 
+/**
+* Webhook connected to Dialogflow through Heroku app
+*/
 restService.post("/webhook",function(req,res){
-  let response;
-  let promise;
- let tag = req.body.result.action //We can change the tag to get differents gifs 
-  console.log('tag ->' + tag);
-  promise = new Promise(function(resolve){
-   
-    request("https://api.giphy.com/v1/gifs/random?api_key="+GIPHY_TOKEN+"&tag="+tag+"&rating=PG-13",function(err,res,body){
-      resolve(response = JSON.parse(body).data.images.original.url)
-
-    });
-  });
-  promise.then(function(response){
-    return res.json({
-      messages:[
-        {
-          type : 3,
-          imageUrl : response
-        }
-      ],
-      source : "webhook-echo-sample"
-      
-    },
+	let response;
+	let promise;
+	let tag = req.body.result.action //We can change the tag to get differents gifs 
+ 	promise = new Promise(function(resolve){
+    	request("https://api.giphy.com/v1/gifs/random?api_key="+GIPHY_TOKEN+"&tag="+tag+"&rating=PG-13",function(err,res,body){
+      		resolve(response = JSON.parse(body).data.images.original.url)
+    	});
+  	});
+  	promise.then(function(response){
+    	return res.json({
+      		messages:[
+        	{
+          		type : 3,
+          		imageUrl : response
+        	}
+      		],
+      		source : "webhook-echo-sample"
+	    },
     
   );
   });
@@ -60,34 +59,6 @@ restService.post("/webhook", function(req, res) {
   });
 });
 
-let response_fp = function(tipo){
-  let response_fp;
-  switch(tipo){
-    case 'daw':
-      response_fp = 'Aquí hay un montón de información --> http://moodle.iesgrancapitan.org/course/index.php?categoryid=7';
-      break;
-    case 'asir':
-      response_fp = 'Mira aquí --> http://moodle.iesgrancapitan.org/course/index.php?categoryid=4';
-      break;
-    case 'cocina y gastronomia':
-      response_fp = 'Quizás aquí obtengas la información que buscas --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-medio/detalle-titulo?idTitulo=1';
-      break;
-    case 'servicios restauracion':
-      response_fp = 'Mira aquí --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-medio/detalle-titulo?idTitulo=2';
-      break;
-    case 'cocina y restauracion':
-      response_fp = 'Aquí hay un montón de información --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-basica/detalle-titulo?idTitulo=148';
-      break;
-    case 'direccion cocina':
-      response_fp = 'He encontrado esto al respecto --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-superior/detalle-titulo?idTitulo=57';
-      break;
-    case 'direccion restauracion':
-      response_fp = 'Aquí está la información que buscas --> http://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/fp-grado-superior/detalle-titulo?idTitulo=58';
-      break;
-    default: response_fp = 'Ese ciclo yo no lo conozco, tendré que ponerme al día!'; break;
-  }
-  return response_fp;
-}
 */
 
 
