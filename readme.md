@@ -8,6 +8,8 @@ El proyecto está conformado además por [este](https://github.com/Proyecto-chat
 
 El webhook realiza llamadas a la API de *Giphy* para la obtención de gifs. Por motivos de seguridad no se ha incluido ningún fichero de almacenamiento de tokens o api keys, por lo que es necesario generarlo o almacenarlo como variable de sesión en el servidor o plataforma en que despleguemos la aplicación.
 
+Si el webhook es desplegado como una aplicación en Heroku, es necesario crear un buildpack que nos permita lanzar el fichero *package.json* en cada deploy
+
 ```javascript
  //Cargar los módulos requeridos
  npm install
@@ -21,7 +23,7 @@ El webhook realiza llamadas a la API de *Giphy* para la obtención de gifs. Por 
 * [Pablo León](https://github.com/pabloleonalcaide)
 
 ## Deployment
-  El Webhook se despliega actualmente en *Heroku*
+  El Webhook se despliega actualmente en *Heroku* [Enlace](https://grancapibot.herokuapp.com/)
 ## Built with
 
 * Express - como framework para Node.js
