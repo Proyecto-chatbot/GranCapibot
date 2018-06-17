@@ -1,3 +1,8 @@
+/**
+* Webhook for Dialogflow V1
+* @author Pablo Leon & Nieves Borrero
+*/
+
 "use strict";
 
 const express = require("express");
@@ -6,9 +11,7 @@ const request = require("request");
 const restService = express();
 const GIPHY_TOKEN =  process.env.giphy; // Defined as env var on Heroku
 restService.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
+  bodyParser.urlencoded({ extended: true })
 );
 
 restService.use(bodyParser.json());
@@ -34,33 +37,11 @@ restService.post("/webhook",function(req,res){
         	}
       		],
       		source : "webhook-echo-sample"
-	    },
+	    	},
     
-  );
-  });
+  		);
+  	});
 });
-
-/*
-restService.post("/webhook", function(req, res) {
- var speech;
-  if(req.body.result && req.body.result.parameters){
-    if(req.body.result.parameters.tipo)
-      speech = response_fp(req.body.result.parameters.tipo.toLowerCase());
-    else if(req.body.result.parameters.nombre_ciclo)
-      speech = response_fp(req.body.result.parameters.nombre_ciclo.toLowerCase());
-  }else{
-      speech = "Ups... ha habido algún problema con nuestra comunicación, sorry!";
- }
-
-  return res.json({
-        speech: speech,
-    displayText: speech,
-    source: "webhook-echo-sample"
-  });
-});
-
-*/
-
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
