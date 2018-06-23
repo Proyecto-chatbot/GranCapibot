@@ -6,14 +6,17 @@ Esta aplicación está desarrollada en Node.js y permite conectar la plataforma 
 
 El proyecto está conformado además por [este](https://github.com/Proyecto-chatbot/panel-administracion-chatbot) repositorio donde se encuentra el panel de configuración para el chatbot conversacional desarrollado para el centro.
 
-El webhook realiza llamadas a la API de *Giphy* para la obtención de gifs. Por motivos de seguridad no se ha incluido ningún fichero de almacenamiento de tokens o api keys, por lo que es necesario generarlo o almacenarlo como variable de sesión en el servidor o plataforma en que despleguemos la aplicación.
+El Webhook realiza llamadas a la API de *Giphy* para la obtención de gifs de forma aleatoria. Por motivos de seguridad no se ha incluido ningún fichero de almacenamiento de tokens o api keys, por lo que es necesario generarlo o almacenarlo como variable de sesión en el servidor o plataforma en que despleguemos la aplicación.
 
-Si el webhook es desplegado como una aplicación en Heroku, es necesario crear un buildpack que nos permita lanzar el fichero *package.json* en cada deploy
+Si el Webhook es desplegado como una aplicación en Heroku, es necesario crear un buildpack de node.js que nos permita lanzar el fichero *package.json* en cada deploy.
 
+Cargar los módulos requeridos
 ```javascript
- //Cargar los módulos requeridos
  npm install
- //Lanzar el servicio
+```
+
+Lanzar el servicio
+```javascript
  node index.js
 ```
 
@@ -27,8 +30,9 @@ Si el webhook es desplegado como una aplicación en Heroku, es necesario crear u
 
 ## Built with
 
-* Express - como framework para Node.js
-* GIPHY API
+* [Express](http://expressjs.com/es/) - como framework para Node.js
+* [GIPHY API](https://developers.giphy.com/)
+* [Dialogflow](https://dialogflow.com/docs/reference/agent/)
 
 ## License
 [GNU General Public License v3.0](../master/LICENSE)
