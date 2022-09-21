@@ -26,7 +26,7 @@ Lanzar el servicio
 * [Pablo León](https://github.com/pabloleonalcaide)
 
 ## Deployment
-  El Webhook se despliega actualmente en *Heroku* [Enlace](https://grancapibot.herokuapp.com/)
+  El Webhook puede desplegarse en cualquier servidor o plataforma de despliegues (Inicialmente usamos Heroku) tomando como entrada el fichero `index.js`
 
 ## Built with
 
